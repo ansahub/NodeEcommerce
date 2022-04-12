@@ -1,0 +1,56 @@
+<h1>CART DETAIL</h1>
+
+<form action="/cartDetail" method="post">
+<a class="btn btn-info" href="/">Back To Items</a>
+<button type="submit" class="btn btn-danger">Checkout</button>
+</form>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Item Id
+                </th>
+                <th>
+                    Item name
+                </th>
+                <th>
+                    Item price
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each items}}
+            <tr>
+                <td>
+                    {{itemId}}
+                </td>
+                <td>
+                    {{itemName}}
+                </td>
+                <td>
+                    {{price}} SEK
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-danger" onclick="deleteFromCart({{@index}})"><i class="far fa-trash-alt"></i></button>
+                </td>
+            </tr>
+            {{/each}}
+            {{#unless items.length}}
+            <h2>
+                No Item found! 
+            </h2>
+            {{/unless}}
+
+        </tbody>
+    </table>
+
+
+    <h5>Total Items: {{items.length}}</h5>
+
+
+    <h5>Total price: {{totalPrice}} SEK</h5>
+
+</div>

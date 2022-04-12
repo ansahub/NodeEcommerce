@@ -1,0 +1,96 @@
+<div class="slide-right">
+    <h1 class="welcome">W E L C O M E{{#if session.loggedIn}} - {{{session.user.name}}} {{/if}}</h1>
+</div>
+
+ {{#if session.user.admin}}
+<form action="/home/addItem" method="post" enctype="multipart/form-data">
+   
+    <a class="btn btn-primary" aria-current="page" href="/addItem">Add Item</a>
+    <a class="btn btn-primary" aria-current="page" href="/categoryList">Categories</a>
+</form>
+{{/if}}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="btn btn-success" aria-current="page" href="/CartDetail">
+                           <i class="fas fa-shopping-cart fa-2x"></i><span id="cartNr">0</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <br/>
+    <form asp-page-handler="search" method="get">
+        <input name="q" class="form-control" />
+
+        <br /><select name="categoryId">
+                        <option value="" selected>Search by Category</option>
+                        {{#each categories}}
+                        <option value="{{categoryId}}">{{categoryName}}</option>
+                        {{/each}}
+
+                    </select>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        
+        {{#unless item.length}}        
+         <div class="mb-3">
+              <h2 id="searchNotFound"> Item searched not found!</h2>
+        </div>     
+        {{/unless}}
+
+    </form>
+
+    <form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Item Id
+                    </th>
+                    <th>
+                        Item name
+                    </th>                    
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Item price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each item}}
+                <tr>
+                    <td>
+                        {{itemId}}
+                    </td>
+                    <td>
+                        {{itemName}}
+                    </td>
+                    <td>
+                        {{category.categoryName}}
+                    </td>
+                    <td>
+                        {{price}} SEK
+                    </td>
+                    <td>
+                         <a class="btn btn-info" href="/detailPage/{{itemId}}">View Detail</a>
+                    </td>
+                </tr>
+                {{/each}}
+                
+    </form>
+    </tbody>
+    </table>
+
+
+</div>
+
+<script src="~/js/default.js"></script>

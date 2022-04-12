@@ -1,0 +1,30 @@
+<a class="btn btn-primary" aria-current="page" href="/addCategory">Add Category</a>
+<a class="btn btn-primary" aria-current="page" href="/">See all items</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Category ID
+            </th>
+            <th>
+                Category name
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>        
+                {{#each categories}}
+            <tr>
+                <td>
+                   {{categoryId}}
+                </td>
+                <td>
+                    {{categoryName}}
+                </td>
+            </tr>
+                {{/each}}
+    </tbody>
+</table>

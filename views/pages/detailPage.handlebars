@@ -1,0 +1,49 @@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Item Id
+                </th>
+                <th>
+                    Item name
+                </th>
+                <th>
+                    Item price
+                </th>
+                <th>
+                    Category Id
+                </th>
+                <th>
+                    Category Name
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>                    
+                    {{item.itemId}}
+                </td>
+                <td>
+                   {{item.itemName}}
+                </td>
+                <td>
+                    {{item.price}} SEK
+                </td>
+                <td>
+                     {{item.category.categoryId}} 
+                </td>
+                <td>
+                     {{item.category.categoryName}} 
+                </td>
+                <td>
+                    <button id="addToCart" onclick="addToCart({{item.itemId}})" type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i></button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+<a class="btn btn-primary" aria-current="page" href="/">Go back to item list</a>
